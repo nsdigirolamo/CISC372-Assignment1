@@ -12,11 +12,9 @@ void matrixArrayOfArrays (int n, int m) {
         my_array[i] = malloc(n * sizeof(float));
     }
 
-    int count = 1;
-
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            my_array[i][j] = count++;
+            my_array[i][j] = (n * i) + j + 1;
             printf("%f\t", my_array[i][j]);
         }
         printf("\n");
