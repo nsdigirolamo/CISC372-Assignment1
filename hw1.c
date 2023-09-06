@@ -4,27 +4,47 @@
 #define N 5
 #define M 6
 
+void printArray (float** a, int n, int m) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%f\t", a[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void printArrayTranspose (float** a, int n, int m) {
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < m; i++) {
+            printf("%f\t", a[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 void matrixArrayOfArrays (int n, int m) {
 
-    float** my_array = malloc(m * sizeof(float*));
+    float** array = malloc(m * sizeof(float*));
 
     for (int i = 0; i < m; i++) {
-        my_array[i] = malloc(n * sizeof(float));
+        array[i] = malloc(n * sizeof(float));
     }
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            my_array[i][j] = (n * i) + j + 1;
-            printf("%f\t", my_array[i][j]);
+            array[i][j] = (n * i) + j + 1;
         }
-        printf("\n");
     }
+
+    printArray(array, n, m);
+    printf("\n");
+    printArrayTranspose(array, n, m);
 
     for (int i = 0; i < m; i++) {
-        free(my_array[i]);
+        free(array[i]);
     }
 
-    free(my_array);
+    free(array);
 
     return;
 }
@@ -42,12 +62,9 @@ void matrixOneBigArray (int n, int m) {
         num_array[j] = j + 1;
     }
 
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%f\t", ptr_array[i][j]);
-        }
-        printf("\n");
-    }
+    printArray(ptr_array, n, m);
+    printf("\n");
+    printArrayTranspose(ptr_array, n, m);
 
     free(ptr_array);
     free(num_array);
