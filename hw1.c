@@ -7,7 +7,8 @@
 void printArray (float** a, int n, int m) {
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            printf("%f\t", a[i][j]);
+            printf("%f", a[i][j]);
+            if (j != n - 1) { printf("\t"); }
         }
         printf("\n");
     }
@@ -16,7 +17,8 @@ void printArray (float** a, int n, int m) {
 void printArrayTranspose (float** a, int n, int m) {
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < m; i++) {
-            printf("%f\t", a[i][j]);
+            printf("%f", a[i][j]);
+            if (i != m - 1) { printf("\t"); }
         }
         printf("\n");
     }
@@ -37,7 +39,6 @@ void matrixArrayOfArrays (int n, int m) {
     }
 
     printArray(array, n, m);
-    printf("\n");
     printArrayTranspose(array, n, m);
 
     for (int i = 0; i < m; i++) {
@@ -63,7 +64,6 @@ void matrixOneBigArray (int n, int m) {
     }
 
     printArray(ptr_array, n, m);
-    printf("\n");
     printArrayTranspose(ptr_array, n, m);
 
     free(ptr_array);
@@ -74,7 +74,6 @@ void matrixOneBigArray (int n, int m) {
 
 int main (int argc, char** argv) {
     matrixArrayOfArrays(N, M);
-    printf("\n");
     matrixOneBigArray(N, M);
     return 0;
 }
